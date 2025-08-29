@@ -2,7 +2,7 @@
 
 A Node.js + Express.js web app that fetches cryptocurrency data 
 from the [CoinGecko API](https://www.coingecko.com/en/api) and 
-displays the top 50 cryptocurrencies.
+displays the top 20 cryptocurrencies.
 
 ## Screenshots
 ![Cryptocurrency List](./screenshots/list.png)
