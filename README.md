@@ -24,7 +24,7 @@ displays the top 20 cryptocurrencies.
 
 - **Frontend:** Bootstrap
 
-- **API:** COinGecko API
+- **API:** CoinGecko API
 
 ## Note
 
