@@ -5,14 +5,16 @@ from the [CoinGecko API](https://www.coingecko.com/en/api) and
 displays the top 50 cryptocurrencies.
 
 ## Screenshots
+![Cryptocurrency List](./screenshots/list.png)
 
-
+![alt text](./screenshots/coin.png) 
+![alt text](./screenshots/price.png)
 
 ## Features 
 
-- View Top 50 Cryptocurrencies
-- VIew Detailed Coin History
-- Live Market Data Updates
+- View Top 20 Cryptocurrencies
+- View Coin History
+- Live Market Data
 
 ## Tech Stack
 

@@ -1,5 +1,62 @@
-<%- include('partials/header.ejs') %>
+<%- include('partials/header.ejs', { title: "Cryptocurrency Prices"}) %>
 
-<h1><%= message %></h1>
+<h1>Cryptocurrency Prices</h1>
+<p class="mb-4">The top 20 cryptocurrency prices by market cap </p>
+
+
+<table class="table table-hover align-middle">
+    <caption>Data provided by <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener noreferrer">CoinGecko API</a></caption>
+    <thead class="table-light">
+        <tr>
+            <th class="py-3">Coin</th>
+            <th class="text-end py-2">Price</th>
+            <th class="text-end py-2">24h</th>
+            <th class="text-end py-2">24h Volume</th>
+            <th class="text-end py-2">Market Cap</th>
+            
+
+        </tr>
+
+    </thead>
+    <tbody>
+        <% data.forEach((coin, index) => { %>
+            <tr onclick="window.location='/coins/<%= coin.id %>'" style="cursor:pointer;">
+
+                <td class="py-3">
+                    <div class="d-flex align-items-center gap-2">
+                        
+                        <img src="<%= coin.image %>" alt="<%= coin.name %> logo" width="28" height="28">
+                    
+                            <span class="fw-semibold">
+                                <%= coin.name %>
+                            </span>
+                            <span class="text-muted text-uppercase small">
+                                <%= coin.symbol %>
+                            </span>
+                        
+                    </div>
+                </td>
+                <td class="text-end py-3"><%= coin.current_price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                <td class="text-end py-3 <%= coin.price_change_percentage_24h >= 0 ? 'text-success' : 'text-danger' %>"><%= coin.price_change_percentage_24h.toFixed(1) %>%</td>
+                <td class="text-end py-3"><%= coin.total_volume.toLocaleString('en-US', { 
+                    style: 'currency', 
+                    currency: 'USD', 
+                    minimumFractionDigits: 0, 
+                    maximumFractionDigits: 0
+                    }) %></td>
+                <td class="text-end py-3"><%= coin.market_cap.toLocaleString('en-US', { 
+                    style: 'currency', 
+                    currency: 'USD', 
+                    minimumFractionDigits: 0, 
+                    maximumFractionDigits: 0 }) %></td>
+                
+
+            </tr>
+            
+        <% }) %>
+    </tbody>
+</table>
+
+
 
 <%- include('partials/footer.ejs') %>

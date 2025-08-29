@@ -1,0 +1,133 @@
+<%- include('partials/header.ejs', { title: coin.name + " History"}) %>
+
+<h1>
+
+    <div class="d-flex align-items-center gap-2">
+
+        <img src="<%= coin.image.large %>" alt="<%= coin.name %> logo" width="40" height="40">
+        <span class="fw-semibold">
+            <%= coin.name %>
+        </span>
+        <span class="text-muted text-uppercase small">
+            <%= coin.symbol %>
+        </span>
+        
+    </div>
+
+</h1>
+
+<div class="d-flex gap-3">
+
+    <table class="table align-middle w-50">
+        <tbody>
+            <tr>
+                <td class="text-start py-3">Market Cap</td>
+                <td class="text-end py-3"><%= coin.market_data.market_cap.usd.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                    }) %>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-start py-3">Fully Diluted Valuation</td>
+                <td class="text-end py-3"><%= coin.market_data.fully_diluted_valuation.usd.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                    })%>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-start py-3">24 Hour Trading Volume</td>
+                <td class="text-end py-3"><%= coin.market_data.total_volume.usd.toLocaleString("en-US", { 
+                    style: "currency" ,
+                    currency: "USD" , 
+                    minimumFractionDigits: 0, 
+                    maximumFractionDigits: 0, 
+                    })%>
+
+                </td>
+                    
+            </tr>
+            <tr>
+                <td class="text-start py-3">Circulating Supply</td>
+                <td class="text-end py-3"><%= coin.market_data.circulating_supply.toLocaleString("en-US", { 
+
+                    minimumFractionDigits: 0, 
+                    maximumFractionDigits: 0, 
+                    })%>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="text-start py-3">Total Supply</td>
+                <td class="text-end py-3"><%= coin.market_data.total_supply.toLocaleString("en-US", { 
+                    minimumFractionDigits: 0, 
+                    maximumFractionDigits: 0,
+                    })%>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="text-start py-3">Max Supply</td>
+                <td class="text-end py-3"><%= coin.market_data.max_supply.toLocaleString("en-US", { 
+                    minimumFractionDigits: 0, 
+                    maximumFractionDigits: 0,
+                    })%>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table align-middle table-bordered w-50" style="height: 3rem;">
+        <caption class="fw-semibold price-caption">Price Change</caption>
+        <thead class="table-secondary">
+            <tr>
+                <th class="text-center py-2">24H</th>
+                <th class="text-center py-2">7D</th>
+                <th class="text-center py-2">14D</th>
+                <th class="text-center py-2">1M</th>
+                <th class="text-center py-2">2M</th>
+                <th class="text-center py-2">1Y</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center <%= coin.market_data.price_change_percentage_24h >= 0 ? 'text-success' : 'text-danger' %>"><%= coin.market_data.price_change_percentage_24h.toFixed(1) %>%</td>
+            
+            
+                <td class="text-center <%= coin.market_data.price_change_percentage_7d >= 0 ? 'text-success' : 'text-danger' %>">
+                    <%= coin.market_data.price_change_percentage_7d.toFixed(1) %>%
+                </td>
+            
+                <td class="text-center <%= coin.market_data.price_change_percentage_14d >= 0 ? 'text-success' : 'text-danger' %>">
+                    <%= coin.market_data.price_change_percentage_14d.toFixed(1) %>%
+                </td>
+            
+            
+                <td class="text-center <%= coin.market_data.price_change_percentage_30d >= 0 ? 'text-success' : 'text-danger' %>">
+                    <%= coin.market_data.price_change_percentage_30d.toFixed(1) %>%
+                </td>
+            
+            
+                <td class="text-center <%= coin.market_data.price_change_percentage_60d >= 0 ? 'text-success' : 'text-danger' %>">
+                    <%= coin.market_data.price_change_percentage_60d.toFixed(1) %>%
+                </td>
+            
+            
+                <td class="text-center <%= coin.market_data.price_change_percentage_1y >= 0 ? 'text-success' : 'text-danger' %>">
+                    <%= coin.market_data.price_change_percentage_1y.toFixed(1) %>%
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+<%- include('partials/footer.ejs') %>
